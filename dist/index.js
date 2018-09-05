@@ -1,6 +1,7 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const c = require("ansi-styles");
 const asyncro_1 = require("asyncro");
 const fs = require("fs-extra");
 const mp = require("multi-progress");
@@ -35,6 +36,11 @@ exports.download = async (configFile, dir, saveJSON) => {
     }
     console.error(`Downloaded ${result.filter(o => o).length} of ${missing.length}`);
     if (result.includes(false)) {
+        await Promise.all(json.assets.assets.map(async (asset) => {
+            if (await DataLoader_1.assetIsInvalid(asset, config)) {
+                console.error(`${c.red.open}Error:${c.red.close} ${c.yellow.open}${asset.path}${c.yellow.close}`);
+            }
+        }));
         return false;
     }
     if (saveJSON) {

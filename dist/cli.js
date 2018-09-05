@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargs = require("yargs");
-const _1 = require("./");
+const index_1 = require("./index");
 const argv = yargs
     .options({
     configFile: {
@@ -20,5 +20,5 @@ const argv = yargs
     }
 })
     .help().argv;
-_1.download(argv.configFile, argv.dir, argv.saveJSON).then(result => process.exit(result ? 0 : -1));
+index_1.download(argv.configFile, argv.dir, argv.saveJSON).then(result => process.exit(result ? 0 : -1));
 //# sourceMappingURL=cli.js.map
