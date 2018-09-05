@@ -1,4 +1,3 @@
-#!/usr/bin/env ts-node
 import * as c from "ansi-styles";
 import { filter } from "asyncro";
 import * as fs from "fs-extra";
