@@ -1,3 +1,4 @@
+#!env node
 import * as yargs from "yargs";
 import { download } from "./index";
 const argv = yargs
